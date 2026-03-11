@@ -1,4 +1,5 @@
 import sys
+import os
 import requests
 
 
@@ -6,7 +7,7 @@ from get_new_FPO_announcement import check_new_announcements  # 匯入函式
 
 
 def notify_discord_webhook(msg):
-    url = 'https://discord.com/api/webhooks/1326831641246695424/dMpcj70ZYGfhJPlnih_E0sf6ZbEIeNWUIIb0kGdiMFR-F0oxi1fTdZeCORKlG7nUMt75'
+    url = os.getenv('DISCORD_WEBHOOK_URL')
     headers = {"Content-Type": "application/json"}
     data = {"content": msg, "username": "公告-現金增資"}
     res = requests.post(url, headers = headers, json = data) 
